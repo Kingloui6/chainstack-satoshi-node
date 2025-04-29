@@ -1,0 +1,66 @@
+Chainstack Satoshi Node Repository
+
+
+---
+
+Folder Structure:
+
+chainstack-satoshi-node/
+├── Dockerfile
+├── docker-compose.yml
+├── README.md
+├── node/
+│   ├── start-node.sh
+│   └── bitcoin.conf
+└── api/
+    └── server.js
+
+
+---
+
+README.md
+
+# Chainstack Satoshi Node
+
+> Proposal for integrating a Bitcoin Core ("Satoshi") node into Chainstack infrastructure.
+
+## Overview
+This project packages a Bitcoin Full Node (`bitcoind`) into a container-ready format with basic API management capabilities, allowing easy deployment on Chainstack's platform.
+
+## Contents
+- Dockerfile to install and run Bitcoin Core
+- Default `bitcoin.conf` optimized for mainnet
+- Shell scripts for node orchestration
+- Optional: lightweight API server for node status queries
+
+## Quick Start
+
+```bash
+git clone https://github.com/YOUR_USERNAME/chainstack-satoshi-node.git
+cd chainstack-satoshi-node
+docker-compose up
+
+Why?
+
+Adding native Bitcoin node support expands Chainstack's Web3 and blockchain offerings, allowing institutions and developers direct access to Bitcoin's network.
+
+Contact
+
+Project initiator: [your name/contact]
+
+
+---
+
+**`Dockerfile`**
+
+```dockerfile
+FROM ubuntu:22.04
+
+RUN apt-get update && apt-get install -y \
+    wget \
+    gnupg \
+    software-properties-common
+
+RUN add-apt-repository ppa:bitcoin/bitcoin && \
+    apt-get update && \
+
